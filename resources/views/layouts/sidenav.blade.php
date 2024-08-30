@@ -46,9 +46,16 @@
                     </li>
                 @endcan
 
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-qr-code"></i>
-                        <p>Scan QR Code</p>
-                    </a> </li>
+                @can('Scan QR')
+                    <li class="nav-item">
+                        <a href="{{ route('scan-qr.index') }}"
+                            class="nav-link {{ request()->routeIs('scan-qr.index') ? 'active' : '' }}"> <i
+                                class="nav-icon bi bi-qr-code"></i>
+                            <p>Scan QR Code</p>
+                        </a>
+                    </li>
+                @endcan
+
                 <li class="nav-item"> <a href="https://techcomfest.ukmpcc.org" class="nav-link" target="_blank">
                         <i class="nav-icon bi bi-trophy"></i>
                         <p>Techcom Fest</p>
@@ -61,7 +68,7 @@
                 <hr class="my-3 text-white" />
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a onclick="document.getElementById('logout-form').submit()" href="#" class="nav-link">
                         <i class="nav-icon bi bi-box-arrow-left"></i>
                         <p>Sign Out</p>
                     </a>
@@ -70,4 +77,9 @@
         </nav>
     </div>
 </aside>
+
+<form id="logout-form" method="POST" action="{{ route('logout') }}">
+    @csrf
+    @method('delete')
+</form>
 {{-- End Aside --}}

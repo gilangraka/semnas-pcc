@@ -33,12 +33,9 @@
                         @if (!$item->ref_peserta->ref_qrcode)
                             <span class="text-danger">Belum Memiliki QRCode</span>
                         @else
-                            @if ($item->ref_peserta->ref_qrcode->status_id == 1)
-                                <span class="text-warning">Belum Digunakan</span>
-                            @endif
-                            @if ($item->ref_peserta->ref_qrcode->status_id == 2)
-                                <span class="text-success">Sudah Digunakan</span>
-                            @endif
+                            <span class="{{ $item->ref_peserta->ref_qrcode->ref_status->css }}">
+                                {{ $item->ref_peserta->ref_qrcode->ref_status->nama_status }}
+                            </span>
                         @endif
 
                     </td>

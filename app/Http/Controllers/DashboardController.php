@@ -56,12 +56,13 @@ class DashboardController extends Controller
             }
             return back();
         }
+        $validatedData = $validator->validated();
 
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            $user->update($request);
-            $user->ref_peserta->update($request);
+            $user->update($validatedData);
+            $user->ref_peserta->update($validatedData);
             DB::commit();
             notyf()->success('Berhasil menyimpan data!');
         } catch (\Exception $e) {

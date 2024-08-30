@@ -40,16 +40,16 @@ class PanitiaController extends Controller
             }
             return back();
         }
-
+        $validatedData = $validator->validated();
+        $validatedData['password'] = bcrypt($validatedData['password']);
 
         try {
-            $request->password = bcrypt($request->password);
             DB::beginTransaction();
 
-            $user = User::create($request);
+            $user = User::create($validatedData);
             $user->assignRole('Panitia');
-            $request->user_id = $user->id;
-            RefPeserta::create($request);
+            $validatedData['user_id'] = $user->id;
+            RefPeserta::create($validatedData);
 
             DB::commit();
             notyf()->success('Berhasil menambah panitia!');

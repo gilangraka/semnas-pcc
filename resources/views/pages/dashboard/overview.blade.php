@@ -33,3 +33,26 @@
         @endforeach
     </p>
 </div>
+
+<div class="row mt-3">
+    <p class="col-lg-3 col-md-4 label "><b>Status Pembayaran</b></p>
+    <p class="col-lg-9 col-md-8">
+        @if (!$data->ref_peserta->ref_qrcode)
+            <span class="text-danger">Belum Dibayar</span>
+        @else
+            <span class="text-success">Sudah Dibayar</span>
+        @endif
+    </p>
+</div>
+<div class="row mt-3">
+    <p class="col-lg-3 col-md-4 label ">
+        @if (!$data->ref_peserta->ref_qrcode)
+            <form action="{{ route('pembayaran.store') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary d-flex gap-3 align-items-center">Bayar Sekarang</button>
+            </form>
+        @else
+            <button class="btn btn-primary d-flex gap-3 align-items-center">Download QR Code</button>
+        @endif
+    </p>
+</div>

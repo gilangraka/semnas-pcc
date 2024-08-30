@@ -27,7 +27,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = User::with('ref_peserta')->find(Auth::id());
+        $data = User::with('ref_peserta.ref_qrcode')->find(Auth::id());
         $role = User::find(Auth::id())->getRoleNames();
 
         return view('pages.dashboard.index', compact('data', 'role'));

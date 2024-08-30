@@ -4,9 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class RefQRCode extends Model
 {
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->{$model->getKeyName()})) {
+                $model->{$model->getKeyName()} = (string) Str::uuid();
+            }
+        });
+    }
+
     use HasFactory;
     protected $table = 'ref_qrcode';
     protected $fillable = [
@@ -17,6 +29,8 @@ class RefQRCode extends Model
     protected $casts = [
         'id' => 'string',
     ];
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     public function ref_peserta()
     {

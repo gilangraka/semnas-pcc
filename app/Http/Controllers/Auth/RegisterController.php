@@ -31,6 +31,7 @@ class RegisterController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
+            return back();
         }
         $validatedData = $validator->validated();
         $validatedData['password'] = bcrypt($validatedData['password']);

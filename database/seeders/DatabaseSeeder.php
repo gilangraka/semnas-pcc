@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // $user = User::factory()->create([
-        //     'name' => 'Gilang Raka Ramadhan',
-        //     'email' => 'rakakiki212@gmail.com',
-        // ]);
-        // $user->assignRole('Administrator');
+        $user = User::factory()->create([
+            'name' => 'Gilang Raka Ramadhan',
+            'email' => 'rakakiki212@gmail.com',
+        ]);
+        $user->assignRole('Administrator');
     }
 }

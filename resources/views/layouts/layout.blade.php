@@ -7,25 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Seminar Nasional | @yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ asset('css/overlayscrollbars.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/adminlte.rtl.css') }}">
+        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
+        integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
+        integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
     @stack('css')
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
-        @extends('layouts.topbar')
-        @extends('layouts.sidenav')
+        @include('layouts.topnav')
+
+        @include('layouts.sidenav')
+
+        {{-- Main --}}
         <main class="app-main">
             <div class="app-content-header">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">
-                                @yield('title')
-                            </h3>
+                            <h3 class="mb-0">@yield('title')</h3>
                         </div>
                     </div>
                 </div>
@@ -36,15 +39,21 @@
                 </div>
             </div>
         </main>
-        @extends('layouts.footer')
+        {{-- End Main --}}
+
+        @include('layouts.footer')
     </div>
 
+
+
     @stack('js')
-    <script src="{{ asset('js/overlayscrollbars.browser.es6.min') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
+        integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/adminlte.js') }}" is:inline></script>
-    <script is:inline>
+    <script src="{{ asset('js/adminlte.js') }}"></script>
+    <script>
         const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
         const Default = {
             scrollbarTheme: "os-theme-light",

@@ -40,20 +40,20 @@ class DashboardController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'email' => 'required|string|email',
             'nomor_hp' => 'string|max:20',
             'instansi' => 'required|string|max:100',
             'profesi' => 'required|string|max:100',
-            'link_facebook' => 'string|max:100',
-            'link_instagram' => 'string|max:100',
-            'link_twitter' => 'string|max:100',
-            'link_tiktok' => 'string|max:100'
+            'link_facebook' => 'max:100',
+            'link_instagram' => 'max:100',
+            'link_twitter' => 'max:100',
+            'link_tiktok' => 'max:100'
         ]);
         if ($validator->fails()) {
             $errors = $validator->errors()->all();
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
+            return back();
         }
         $validatedData = $validator->validated();
 
@@ -81,6 +81,7 @@ class DashboardController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
+            return back();
         }
 
         try {
@@ -89,8 +90,8 @@ class DashboardController extends Controller
             $file = $request->file('foto_profil');
             $nama_file = $this->generate_nama_file() . '.' . $file->getClientOriginalExtension();
             $path_file = 'foto_profil/' . $nama_file;
-            $user->foto_profil = $nama_file;
-            $user->save();
+            $user->ref_peserta->foto_profil = $nama_file;
+            $user->ref_peserta->save();
             Storage::disk('public')->put($path_file, file_get_contents($file));
             DB::commit();
             notyf()->success('Berhasil mengupload foto profil');
@@ -108,8 +109,8 @@ class DashboardController extends Controller
         $path_file = 'foto_profil/' . $nama_file;
 
         Storage::disk('public')->delete($path_file);
-        $user->foto_profil = null;
-        $user->save();
+        $user->ref_peserta->foto_profil = null;
+        $user->ref_peserta->save();
 
         notyf()->success("Berhasil menghapus foto profil!");
         return back();

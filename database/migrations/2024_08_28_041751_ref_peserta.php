@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('nomor_hp', 20);
             $table->string('instansi', 100);
             $table->string('profesi', 100);
-            $table->string('foto_profil', 100);
-            $table->string('link_facebook', 100);
-            $table->string('link_instagram', 100);
-            $table->string('link_twitter', 100);
-            $table->string('link_tiktok', 100);
+            $table->string('foto_profil', 100)->nullable();
+            $table->string('link_facebook', 100)->nullable();
+            $table->string('link_instagram', 100)->nullable();
+            $table->string('link_twitter', 100)->nullable();
+            $table->string('link_tiktok', 100)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

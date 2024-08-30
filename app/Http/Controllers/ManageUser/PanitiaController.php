@@ -17,6 +17,7 @@ class PanitiaController extends Controller
     public function index()
     {
         $data = User::role('Panitia')->with('ref_peserta')->get();
+        return view('pages.data-panitia.index', compact('data'));
     }
 
 
@@ -38,7 +39,6 @@ class PanitiaController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
-            return back();
         }
         $validatedData = $validator->validated();
         $validatedData['password'] = bcrypt($validatedData['password']);

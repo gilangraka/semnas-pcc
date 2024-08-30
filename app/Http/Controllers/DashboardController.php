@@ -30,7 +30,7 @@ class DashboardController extends Controller
         $data = User::with('ref_peserta')->find(Auth::id());
         $role = User::find(Auth::id())->getRoleNames();
 
-        return redirect('dashboard', compact('data', 'role'));
+        return view('pages.dashboard.index', compact('data', 'role'));
     }
 
     /**
@@ -54,7 +54,6 @@ class DashboardController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
-            return back();
         }
         $validatedData = $validator->validated();
 
@@ -82,7 +81,6 @@ class DashboardController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
-            return back();
         }
 
         try {
@@ -112,5 +110,8 @@ class DashboardController extends Controller
         Storage::disk('public')->delete($path_file);
         $user->foto_profil = null;
         $user->save();
+
+        notyf()->success("Berhasil menghapus foto profil!");
+        return back();
     }
 }

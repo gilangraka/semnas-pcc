@@ -29,7 +29,6 @@ class AuthenticatedSessionController extends Controller
             foreach ($errors as $error) {
                 notyf()->error($error);
             }
-            return back();
         }
 
         try {

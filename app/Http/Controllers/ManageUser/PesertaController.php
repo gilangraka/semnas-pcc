@@ -14,5 +14,6 @@ class PesertaController extends Controller
     public function index()
     {
         $data = User::role('Panitia')->with('ref_peserta')->get();
+        return view('pages.data-peserta.index', compact('data'));
     }
 }

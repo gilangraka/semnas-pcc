@@ -15,9 +15,9 @@ Route::middleware('auth')->group(function () {
     Route::post('update-profile', [DashboardController::class, 'update_profile'])->name('profile.update');
     Route::post('delete-profile', [DashboardController::class, 'delete_profile'])->name('profile.delete');
 
-    Route::resource('manage-peserta', PesertaController::class)->only('index');
-    Route::resource('manage-panitia', PanitiaController::class)->only(['index', 'store']);
-    Route::post('reset-password', ForgotPasswordController::class)->name('password.reset');
+    Route::resource('manage-peserta', PesertaController::class)->only('index')->middleware('can:Lihat User');
+    Route::resource('manage-panitia', PanitiaController::class)->only(['index', 'store'])->middleware('can:Lihat User');
+    Route::put('reset-password/{id}', ForgotPasswordController::class)->name('password.reset');
 });
 
 require __DIR__ . '/auth.php';

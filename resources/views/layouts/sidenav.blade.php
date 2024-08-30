@@ -12,8 +12,9 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open"> <a href="#" class="nav-link active"> <i
-                            class="nav-icon bi bi-speedometer"></i>
+                <li class="nav-item"> <a href="{{ route('dashboard.index') }}"
+                        class="nav-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-speedometer"></i>
                         <p>
                             Dashboard
                         </p>
@@ -21,21 +22,30 @@
                 </li>
 
                 <li class="nav-header">PAGES</li>
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-people-fill"></i>
-                        <p>
-                            Kelola User
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-dot"></i>
-                                <p>Panitia Seminar</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-dot"></i>
-                                <p>Peserta Seminar</p>
-                            </a> </li>
-                    </ul>
-                </li>
+                @can('Lihat User')
+                    <li class="nav-item"> <a href="#"
+                            class="nav-link {{ request()->routeIs('manage-peserta.index') || request()->routeIs('manage-panitia.index') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-people-fill"></i>
+                            <p>
+                                Kelola User
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"> <a href="{{ route('manage-panitia.index') }}"
+                                    class="nav-link {{ request()->routeIs('manage-panitia.index') ? 'active' : '' }}"> <i
+                                        class="nav-icon bi bi-dot"></i>
+                                    <p>Panitia Seminar</p>
+                                </a> </li>
+                            <li class="nav-item"> <a href="{{ route('manage-peserta.index') }}"
+                                    class="nav-link {{ request()->routeIs('manage-peserta.index') ? 'active' : '' }}"> <i
+                                        class="nav-icon bi bi-dot"></i>
+                                    <p>Peserta Seminar</p>
+                                </a> </li>
+                        </ul>
+                    </li>
+                @endcan
+
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-qr-code"></i>
                         <p>Scan QR Code</p>
                     </a> </li>

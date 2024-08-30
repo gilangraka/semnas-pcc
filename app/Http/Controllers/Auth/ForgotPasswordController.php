@@ -11,11 +11,11 @@ class ForgotPasswordController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
         try {
             $default_password = "semnastechcompfest2025";
-            $user = User::findOrFail($request->user_id);
+            $user = User::findOrFail($id);
             $user->password = bcrypt($default_password);
             $user->save();
 

@@ -14,6 +14,9 @@ class RefQRCode extends Model
         'file_qrcode',
         'status_id'
     ];
+    protected $casts = [
+        'id' => 'string',
+    ];
 
     public function ref_peserta()
     {

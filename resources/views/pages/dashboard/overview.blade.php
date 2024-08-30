@@ -25,5 +25,11 @@
 
 <div class="row mt-3">
     <p class="col-lg-3 col-md-4 label "><b>Login Sebagai</b></p>
-    <p class="col-lg-9 col-md-8">{{ $role[0] }}</p>
+    <p class="col-lg-9 col-md-8">
+        @foreach ($role as $index => $item)
+            {{ $item }}@if (!$loop->last)
+                ,
+            @endif
+        @endforeach
+    </p>
 </div>

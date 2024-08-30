@@ -7,7 +7,8 @@ use App\Models\RefQRCode;
 use App\Models\TrxPembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PembayaranController extends Controller
 {
@@ -59,6 +60,15 @@ class PembayaranController extends Controller
         $ref_qrcode->peserta_id = $transaksi->peserta_id;
         $ref_qrcode->status_id = 1;
         $ref_qrcode->save();
+
+        $ref_qrcode->file_qrcode = $ref_qrcode->id . ".svg";
+        $ref_qrcode->save();
+
+        $path_file = 'qr_code/' . $ref_qrcode->file_qrcode;
+        $file_qr = QrCode::size(200)
+            ->format('svg')
+            ->generate($ref_qrcode->id);
+        Storage::disk('public')->put($path_file, $file_qr);
 
         notyf()->success('Berhasil melakukan pembayaran');
         return redirect()->route('dashboard.index');

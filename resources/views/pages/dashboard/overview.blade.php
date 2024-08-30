@@ -44,15 +44,19 @@
         @endif
     </p>
 </div>
-<div class="row mt-3">
-    <p class="col-lg-3 col-md-4 label ">
+<div class="row mt-2">
+    <div class="col-lg-3 col-md-4 label ">
+
+    </div>
+    <div class="col-lg-9 col-md-8">
         @if (!$data->ref_peserta->ref_qrcode)
             <form action="{{ route('pembayaran.store') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-primary d-flex gap-3 align-items-center">Bayar Sekarang</button>
             </form>
         @else
-            <button class="btn btn-primary d-flex gap-3 align-items-center">Download QR Code</button>
+            <img src="{{ asset('storage/qr_code') . '/' . $data->ref_peserta->ref_qrcode->file_qrcode }}"
+                width="150" />
         @endif
-    </p>
+    </div>
 </div>

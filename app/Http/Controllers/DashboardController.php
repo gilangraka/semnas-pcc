@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class DashboardController extends Controller
@@ -37,7 +38,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|email',
             'nomor_hp' => 'string|max:20',
@@ -48,12 +49,19 @@ class DashboardController extends Controller
             'link_twitter' => 'string|max:100',
             'link_tiktok' => 'string|max:100'
         ]);
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            foreach ($errors as $error) {
+                notyf()->error($error);
+            }
+            return back();
+        }
 
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            $user->update($validasi);
-            $user->ref_peserta->update($validasi);
+            $user->update($request);
+            $user->ref_peserta->update($request);
             DB::commit();
             notyf()->success('Berhasil menyimpan data!');
         } catch (\Exception $e) {
@@ -65,12 +73,19 @@ class DashboardController extends Controller
 
     public function update_profile(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'foto_profil' => 'required|file|mimes:jpeg,png,jpg'
         ]);
-        $user = Auth::user();
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            foreach ($errors as $error) {
+                notyf()->error($error);
+            }
+            return back();
+        }
 
         try {
+            $user = Auth::user();
             DB::beginTransaction();
             $file = $request->file('foto_profil');
             $nama_file = $this->generate_nama_file() . '.' . $file->getClientOriginalExtension();

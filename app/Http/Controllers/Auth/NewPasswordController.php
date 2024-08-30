@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class NewPasswordController extends Controller
 {
@@ -15,10 +16,17 @@ class NewPasswordController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'current_password' => 'required|string',
             'new_password' => 'required|string|confirmed'
         ]);
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            foreach ($errors as $error) {
+                notyf()->error($error);
+            }
+            return back();
+        }
 
         try {
             $user = User::findOrFail(Auth::id());

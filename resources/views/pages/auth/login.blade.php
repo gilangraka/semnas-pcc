@@ -14,7 +14,8 @@
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/login" method="POST">
+                        <form action="{{ route('login.store') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="email">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" required />
@@ -23,7 +24,7 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required />
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
                         </form>
                     </div>
                     <div class="card-footer text-center">

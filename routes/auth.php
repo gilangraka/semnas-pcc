@@ -6,7 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::resource('login', AuthenticatedSessionController::class)->only(['index', 'store']);
+    Route::get('login', [AuthenticatedSessionController::class, 'index'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
     Route::resource('register', RegisterController::class)->only(['index', 'store']);
 });
 

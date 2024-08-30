@@ -7,6 +7,7 @@ use App\Models\RefPeserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -17,7 +18,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        $validasi = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|unique:users,email',
             'password' => 'required|string|confirmed',
@@ -25,15 +26,22 @@ class RegisterController extends Controller
             'instansi' => 'required|string',
             'profesi' => 'required|string'
         ]);
-        $validasi['password'] = bcrypt($validasi['password']);
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            foreach ($errors as $error) {
+                notyf()->error($error);
+            }
+            return back();
+        }
 
         try {
+            $request->password = bcrypt($request->password);
             DB::beginTransaction();
 
-            $user = User::create($validasi);
+            $user = User::create($request);
             $user->assignRole('Peserta');
-            $validasi['user_id'] = $user->id;
-            RefPeserta::create($validasi);
+            $request->user_id = $user->id;
+            RefPeserta::create($request);
 
             DB::commit();
             notyf()->success('Berhasil registrasi!');

@@ -14,30 +14,9 @@
     @stack('css')
 </head>
 
-<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <div class="app-wrapper">
-        @extends('layouts.topbar')
-        @extends('layouts.sidenav')
-        <main class="app-main">
-            <div class="app-content-header">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">
-                                @yield('title')
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="app-content">
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
-            </div>
-        </main>
-        @extends('layouts.footer')
-    </div>
+<body>
+
+    @yield('content')
 
     @stack('js')
     <script src="{{ asset('js/overlayscrollbars.browser.es6.min') }}"></script>

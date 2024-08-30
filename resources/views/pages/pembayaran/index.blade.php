@@ -6,7 +6,15 @@
 
 @section('content')
     <div class="alert alert-warning" role="alert">
-        Jangan tinggalkan halaman ini sampai anda mendapatkan notifikasi bahwa pembayaran berhasil dilakukan!
+        <ul>
+            <li>
+                Apabila sudah melakukan pembayaran, tunggu sekitar 5 sampai 10 detik, atau klik "Cek Status"
+            </li>
+            <li>
+                <b>Jangan tinggalkan halaman ini</b> sampai anda mendapatkan
+                notifikasi bahwa pembayaran berhasil dilakukan
+            </li>
+        </ul>
     </div>
 
     <div class="d-flex justify-content-center">
@@ -42,5 +50,23 @@
                 }
             });
         };
+    </script>
+
+    <script>
+        var url = `{{ url('cek-bayar/' . $data->order_id) }}`;
+        setInterval(function() {
+            fetch(url)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status_code == 200) {
+                        window.location.href = '{{ route('pembayaran.sukses', $data->id) }}';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }, 7000);
     </script>
 @endpush

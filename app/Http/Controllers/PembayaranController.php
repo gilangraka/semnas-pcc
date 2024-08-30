@@ -7,8 +7,11 @@ use App\Models\RefQRCode;
 use App\Models\TrxPembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Str;
 
 class PembayaranController extends Controller
 {
@@ -18,7 +21,8 @@ class PembayaranController extends Controller
         $pembayaran = TrxPembayaran::create([
             'peserta_id' => $ref_peserta->id,
             'amount' => 35000,
-            'status' => 'pending'
+            'status' => 'pending',
+            'order_id' => 'semnas-' . Str::random(20)
         ]);
 
         // Set your Merchant Server Key
@@ -32,7 +36,7 @@ class PembayaranController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
+                'order_id' => $pembayaran->order_id,
                 'gross_amount' => $pembayaran->amount,
             )
         );
@@ -45,6 +49,9 @@ class PembayaranController extends Controller
 
     public function pembayaran($id_pembayaran)
     {
+        $trx = TrxPembayaran::find($id_pembayaran);
+        Gate::authorize('trx-peserta', $trx);
+
         $data = TrxPembayaran::findOrFail($id_pembayaran);
         return view('pages.pembayaran.index', compact('data'));
     }
@@ -74,8 +81,17 @@ class PembayaranController extends Controller
         return redirect()->route('dashboard.index');
     }
 
-    public function tambah_qrcode()
+    public function cek_pembayaran($order_id)
     {
-        $ref_peserta = RefPeserta::where('user_id', Auth::id())->first();
+        $key = env('MIDTRANS_SERVER_KEY') . ':';
+        $base64 = base64_encode($key);
+
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => $base64
+        ])->get("https://api.sandbox.midtrans.com/v2/$order_id/status");
+
+        return $response->json();
     }
 }

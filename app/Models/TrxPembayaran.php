@@ -10,6 +10,7 @@ class TrxPembayaran extends Model
     use HasFactory;
     protected $table = 'trx_pembayaran';
     protected $fillable = [
+        'order_id',
         'peserta_id',
         'amount',
         'status',

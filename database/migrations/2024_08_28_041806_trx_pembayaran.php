@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('trx_pembayaran', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 20);
+            $table->string('order_id', 20);
             $table->unsignedBigInteger('peserta_id');
             $table->integer('amount');
             $table->string('status', 100);

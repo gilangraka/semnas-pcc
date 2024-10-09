@@ -44,9 +44,9 @@
         @endif
     </p>
 </div>
-<div class="row mt-2">
+<div class="row mt-3">
     <div class="col-lg-3 col-md-4 label ">
-
+        <p><b>Bukti Pembayaran</b></p>
     </div>
     <div class="col-lg-9 col-md-8">
         @if (!$data->ref_peserta->ref_qrcode)

@@ -41,7 +41,7 @@
                     </td>
                     @can('Reset Password')
                         <td class="text-center">
-                            <button class="btn btn-warning d-flex gap-2" data-bs-toggle="modal" data-bs-target="#resetModal"
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#resetModal"
                                 onclick="open_resetModal({{ $item->id }})"><span>Reset Password</span>
                             </button>
                         </td>

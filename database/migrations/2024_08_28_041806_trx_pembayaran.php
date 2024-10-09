@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('peserta_id');
             $table->integer('amount');
             $table->string('status', 100);
-            $table->string('snap_token', 100);
+            $table->string('snap_token', 100)->nullable();
             $table->timestamps();
 
             $table->foreign('peserta_id')->references('id')->on('ref_peserta')->cascadeOnDelete();

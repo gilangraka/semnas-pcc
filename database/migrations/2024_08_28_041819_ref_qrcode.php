@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ref_qrcode', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->unsignedBigInteger('peserta_id');
-            $table->string('file_qrcode', 100);
+            $table->string('file_qrcode', 100)->nullable();
             $table->unsignedBigInteger('status_id');
             $table->timestamps();
 

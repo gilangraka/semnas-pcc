@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RefPeserta;
 use App\Models\RefQRCode;
 use App\Models\TrxPembayaran;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -59,26 +60,34 @@ class PembayaranController extends Controller
     public function pembayaran_sukses($id_transaksi)
     {
         $transaksi = TrxPembayaran::find($id_transaksi);
-        $transaksi->status = 'success';
-        $transaksi->save();
 
-        // Generate QRCode
-        $ref_qrcode = new RefQRCode();
-        $ref_qrcode->peserta_id = $transaksi->peserta_id;
-        $ref_qrcode->status_id = 1;
-        $ref_qrcode->save();
+        $order_id = $transaksi->order_id;
+        $response = $this->cek_pembayaran($order_id);
+        if ($response['transaction_status'] == 'settlement') {
+            $transaksi->status = 'success';
+            $transaksi->save();
 
-        $ref_qrcode->file_qrcode = $ref_qrcode->id . ".svg";
-        $ref_qrcode->save();
+            // Generate QRCode
+            $ref_qrcode = new RefQRCode();
+            $ref_qrcode->peserta_id = $transaksi->peserta_id;
+            $ref_qrcode->status_id = 1;
+            $ref_qrcode->save();
 
-        $path_file = 'qr_code/' . $ref_qrcode->file_qrcode;
-        $file_qr = QrCode::size(200)
-            ->format('svg')
-            ->generate($ref_qrcode->id);
-        Storage::disk('public')->put($path_file, $file_qr);
+            $ref_qrcode->file_qrcode = $ref_qrcode->id . ".svg";
+            $ref_qrcode->save();
 
-        notyf()->success('Berhasil melakukan pembayaran');
-        return redirect()->route('dashboard.index');
+            $path_file = 'qr_code/' . $ref_qrcode->file_qrcode;
+            $file_qr = QrCode::size(200)
+                ->format('svg')
+                ->generate($ref_qrcode->id);
+            Storage::disk('public')->put($path_file, $file_qr);
+
+            notyf()->success('Berhasil melakukan pembayaran');
+            return redirect()->route('dashboard.index');
+        } else {
+            notyf()->error('Kamu belum melakukan pembayaran!');
+            return redirect()->route('dashboard.index');
+        }
     }
 
     public function cek_pembayaran($order_id)

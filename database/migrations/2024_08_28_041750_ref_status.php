@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ref_status', function (Blueprint $table) {
             $table->id();
             $table->string('nama_status', 100);
-            $table->string('css');
+            $table->string('css')->nullable();
         });
     }
 

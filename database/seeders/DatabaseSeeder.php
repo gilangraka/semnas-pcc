@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\RefPeserta;
+use App\Models\RefStatus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,7 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $status = ['Belum Digunakan' => 'text-success', 'Sudah Digunakan' => 'text-danger'];
+        foreach ($status as $key => $value) {
+            $status = new RefStatus([
+                'nama_status' => $key,
+                'css' => $value
+            ]);
+            $status->save();
+        }
+
         $roles = ['Administrator', 'Panitia', 'Peserta'];
         foreach ($roles as $key => $value) {
             DB::table('roles')->insert([

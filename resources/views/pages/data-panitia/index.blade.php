@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th class="text-center">No</th>
+                <th class="text-center">Email</th>
                 <th class="text-center">Nama</th>
                 <th class="text-center">No WA</th>
                 <th class="text-center">Instansi</th>
@@ -25,6 +26,7 @@
             @foreach ($data as $key => $item)
                 <tr>
                     <td class="text-center">{{ $key + 1 }}</td>
+                    <td class="text-center">{{ $item->email }}</td>
                     <td class="text-center">{{ $item->name }}</td>
                     <td class="text-center">{{ $item->ref_peserta->nomor_hp }}</td>
                     <td class="text-center">{{ $item->ref_peserta->instansi }}</td>

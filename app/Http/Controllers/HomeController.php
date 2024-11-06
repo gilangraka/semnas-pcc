@@ -11,54 +11,71 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
-    }
+        $benefitItems = [
+            (object)[
+                "title" => "Knowledge",
+                "imgUrl" => "knowledge.webp"
+            ],
+            (object)[
+                "title" => "Training",
+                "imgUrl" => "training.webp"
+            ],
+            (object)[
+                "title" => "E-Certificate",
+                "imgUrl" => "certificate.webp"
+            ],
+            (object)[
+                "title" => "Relationship",
+                "imgUrl" => "relationship.webp"
+            ],
+            (object)[
+                "title" => "Experience",
+                "imgUrl" => "experience.webp"
+            ],
+            (object)[
+                "title" => "Goodie Bag",
+                "imgUrl" => "goodie-bag.webp"
+            ],
+            (object)[
+                "title" => "Doorprize",
+                "imgUrl" => "doorprize.webp"
+            ],
+        ];
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $faqItems = [
+            (object)[
+                "question" => "Apa itu Seminar Nasional?",
+                "answer" => "Seminar Nasional merupakan salah satu wujud misi dan peran aktif UKM Polytechnic Computer Club 
+                            dalam mengikuti perkembangan teknologi dalam bidang IT melalui lomba SMA/ SMK sederajat dan Mahasiswa Umum Se-Indonesia."
+            ],
+            (object)[
+                "question" => "Materi apa yang disampaikan di Seminar Nasional?",
+                "answer" => "LinkedIn yang diikuti oleh beberapa sub materi, yaitu..."
+            ],
+            (object)[
+                "question" => "Seminar Nasional dilaksanakan dimana saja?",
+                "answer" => "Seminar dilakukan secara hybrid yaitu secara online via zoom dan offline di Gedung Kerjasama Terpadu Polines 
+                            dengan alamat Jl. Prof. Sudarto, Tembalang, Kec. Tembalang, Kota Semarang, Jawa Tengah atau bisa klik disini."
+            ],
+            (object)[
+                "question" => "Siapa pengisi suara di Seminar Nasional nanti?",
+                "answer" => "Untuk pengisi materi sendiri akan kami umumkan di instagram Techcomfest, 
+                            jadi stay tune terus yaaaa"
+            ],
+            (object)[
+                "question" => "Hal apa saja yang perlu disiapkan di Seminar Nasional TECHCOMFEST nanti?",
+                "answer" => "Untuk perlengkapan yang perlu dibawa waktu seminar nasional TECHCOMFEST akan diumumkan menyusul. Jadi stay tune terus yaaa"
+            ],
+            (object)[
+                "question" => "Metode pembayarannya bagaimana?",
+                "answer" => "..."
+            ],
+            (object)[
+                "question" => "HTM untuk Seminar nasional berapa?",
+                "answer" => "..."
+            ],
+        ];
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('pages.home', compact('benefitItems', 'faqItems'));
     }
 }

@@ -4,9 +4,8 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta description="Techcomfest adalah event nasional yang diselenggarakan oleh UKM Polytechnic Computer Club, Politeknik Negeri Semarang.">
-    <title>@yield('title')</title>
-    <link rel="icon" href="{{ asset('img/tcfest2025.webp') }}" type="image/png">
+    <title>Seminar Nasional</title>
+    <link rel="icon" href="{{ asset('img/knowledge.webp') }}" type="image/png">
 
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -21,13 +20,12 @@
         @yield('content')
     </main>
 
-    {{-- @include('components.footer') --}}
+    @include('components.footer')
 
-    <script  src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
+    <script src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script>
-    AOS.init();
+        AOS.init();
     </script>
     @stack('scripts')
 

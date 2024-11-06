@@ -26,7 +26,8 @@
             >
                 Dashboard
             </x-partials.button-link>
-            @endauth @guest
+            @endauth 
+            @guest
             <x-partials.button-link
                 href="{{ route('login') }}"
                 class="bg-gradient-to-r from-sem-dark-blue to-sem-light-blue text-white"

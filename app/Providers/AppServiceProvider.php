@@ -6,6 +6,7 @@ use App\Models\TrxPembayaran;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('trx-peserta', function (User $user, TrxPembayaran $trx) {
             return $user->ref_peserta->id == $trx->peserta_id;
         });
+
+        // if (config('app.env') === 'local') {
+        //     URL::forceScheme('https');
+        // }
     }
 }

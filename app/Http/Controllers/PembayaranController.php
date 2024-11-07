@@ -67,48 +67,11 @@ class PembayaranController extends Controller
     {
         $serverKey = env('MIDTRANS_SERVER_KEY');
         $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
-
-        if ($hashedKey !== $request->signature_key) {
-            return response()->json(['message' => 'Invalid signature key'], 403);
-        }
-
-        $transactionStatus = $request->transaction_status;
-        $orderId = $request->order_id;
-        $order = TrxPembayaran::where('order_id', $orderId)->first();
-
-        if (!$order) {
-            return response()->json(['message' => 'Order not found'], 404);
-        }
-
-        switch ($transactionStatus) {
-            case 'capture':
-                if ($request->payment_type == 'credit_card') {
-                    if ($request->fraud_status == 'challenge') {
-                        $order->update(['status' => 'pending']);
-                    } else {
-                        $order->update(['status' => 'success']);
-
-                        // Generate QRCode
-                        $ref_qrcode = new RefQRCode();
-                        $ref_qrcode->peserta_id = $order->peserta_id;
-                        $ref_qrcode->status_id = 1;
-                        $ref_qrcode->save();
-
-                        $ref_qrcode->file_qrcode = $ref_qrcode->id . ".svg";
-                        $ref_qrcode->save();
-
-                        $path_file = 'qr_code/' . $ref_qrcode->file_qrcode;
-                        $file_qr = QrCode::size(200)
-                            ->format('svg')
-                            ->generate($ref_qrcode->id);
-                        Storage::disk('public')->put($path_file, $file_qr);
-                    }
-                }
-                break;
-            case 'settlement':
+        if ($hashedKey == $request->signature_key) {
+            if ($request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {
+                $order = TrxPembayaran::where('order_id', $request->order_id)->first();
                 $order->update(['status' => 'success']);
 
-                // Generate QRCode
                 $ref_qrcode = new RefQRCode();
                 $ref_qrcode->peserta_id = $order->peserta_id;
                 $ref_qrcode->status_id = 1;
@@ -122,23 +85,11 @@ class PembayaranController extends Controller
                     ->format('svg')
                     ->generate($ref_qrcode->id);
                 Storage::disk('public')->put($path_file, $file_qr);
-
-                break;
-            case 'pending':
-                $order->update(['status' => 'pending']);
-                break;
-            case 'deny':
-                $order->update(['status' => 'failed']);
-                break;
-            case 'expire':
-                $order->update(['status' => 'expired']);
-                break;
-            case 'cancel':
-                $order->update(['status' => 'canceled']);
-                break;
-            default:
-                $order->update(['status' => 'unknown']);
-                break;
+                return 2;
+            }
+            return 1;
         }
+
+        return 0;
     }
 }

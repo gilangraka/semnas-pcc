@@ -24,11 +24,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('bayar', [PembayaranController::class, 'proccess'])->name('pembayaran.store');
     Route::get('bayar/{id}', [PembayaranController::class, 'pembayaran'])->name('pembayaran.index');
-    Route::get('bayar-sukses/', [PembayaranController::class, 'pembayaran_sukses'])->name('pembayaran.sukses');
+    Route::get('bayar-sukses', [PembayaranController::class, 'pembayaran_sukses'])->name('pembayaran.sukses');
     Route::resource('scan-qr', ScanQRController::class)->only(['index', 'show'])->middleware('can:Scan QR');
 
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
-Route::post('midtrans-callback', [PembayaranController::class, 'callback']);
+
 
 require __DIR__ . '/auth.php';

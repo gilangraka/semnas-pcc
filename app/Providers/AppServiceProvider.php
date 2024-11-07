@@ -32,8 +32,8 @@ class AppServiceProvider extends ServiceProvider
             return $user->ref_peserta->id == $trx->peserta_id;
         });
 
-        // if (config('app.env') === 'local') {
-        //     URL::forceScheme('https');
-        // }
+        if (config('app.env') === 'local') {
+            URL::forceScheme('https');
+        }
     }
 }

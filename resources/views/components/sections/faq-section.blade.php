@@ -5,7 +5,7 @@
             Frequently Asked Question
         </h2>
         <p class="font-semibold text-lg text-co-dark-blue mt-3 mb-12">
-            Yang sering ditanyakan terkait Seminar Nasional TECHCOMFEST.
+            Yang sering ditanyakan terkait Seminar Nasional Techomfest.
         </p>
     </div>
 
@@ -13,7 +13,7 @@
         @foreach ($faqItems as $item)
             <li>
                 <details class="p-2 bg-slate-100 my-3 hover:cursor-pointer rounded-md">
-                    <summary class="p-2 text-[#263B81] font-semibold">
+                    <summary class="p-2 text-sem-dark-blue font-semibold">
                         {{ $item->question }}
                     </summary>
                     <p class="p-2 text-slate-700">

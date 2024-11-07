@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
+        $navItems = [
+            (object)['name' => 'Home','href' => '#'],
+            (object)['name' => 'About','href' => '#about'],
+            (object)['name' => 'Fillers','href' => '#fillers'],
+            (object)['name' => 'Benefit','href' => '#benefit'],
+            (object)['name' => 'FAQ','href' => '#faq'],
+            (object)['name' => 'Techcomfest','href' => 'https://techcomfest.ukmpcc.org'],
+        ];
+
         $benefitItems = [
             (object)[
                 "title" => "Knowledge",
@@ -76,6 +82,6 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('pages.home', compact('benefitItems', 'faqItems'));
+        return view('pages.home', compact('navItems', 'benefitItems', 'faqItems'));
     }
 }

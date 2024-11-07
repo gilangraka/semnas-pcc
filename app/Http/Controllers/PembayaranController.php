@@ -21,19 +21,19 @@ class PembayaranController extends Controller
         $ref_peserta = RefPeserta::where('user_id', Auth::id())->first();
         $pembayaran = TrxPembayaran::create([
             'peserta_id' => $ref_peserta->id,
-            'amount' => env('HARGA_TIKET'),
+            'amount' => config('app.harga_tiket'),
             'status' => 'pending',
             'order_id' => 'semnas-' . Str::random(20)
         ]);
 
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.serverKey');
+        \Midtrans\Config::$serverKey = config('app.MIDTRANS_SERVER_KEY');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isProduction = config('app.MIDTRANS_IS_PRODUCTION');
         // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$isSanitized = config('app.MIDTRANS_IS_SANITIZED');
         // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
+        \Midtrans\Config::$is3ds = config('app.MIDTRANS_IS_3DS');
 
         $params = array(
             'transaction_details' => array(
@@ -65,7 +65,7 @@ class PembayaranController extends Controller
 
     public function callback(Request $request)
     {
-        $serverKey = env('MIDTRANS_SERVER_KEY');
+        $serverKey = config('app.MIDTRANS_SERVER_KEY');
         $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         if ($hashedKey == $request->signature_key) {
             if ($request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {

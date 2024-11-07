@@ -22,14 +22,14 @@
             <span>ANDA AKAN MELAKUKAN PEMBAYARAN</span>
             <span><b>TIKET SEMNAS 2025</b></span>
             <span>DENGAN HARGA</span>
-            <span><b>Rp. {{ number_format(env('HARGA_TIKET'), 0, ',', '.') }}</b></span>
+            <span><b>Rp. {{ number_format(config('app.harga_tiket'), 0, ',', '.') }}</b></span>
             <button class="btn btn-primary w-100 mt-4" id="pay-button">Lakukan Pembayaran</button>
         </div>
     </div>
 @endsection
 
 @push('js')
-    <script src="{{ env('MIDTRANS_SNAP_URL') }}" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
+    <script src="{{ config('app.MIDTRANS_SNAP_URL') }}" data-client-key="{{ config('app.MIDTRANS_CLIENT_KEY') }}"></script>
     <script type="text/javascript">
         document.getElementById('pay-button').onclick = function() {
             // SnapToken acquired from previous step

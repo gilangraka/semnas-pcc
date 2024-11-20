@@ -51,22 +51,4 @@
             });
         };
     </script>
-
-    <script>
-        var url = `{{ url('cek-bayar/' . $data->order_id) }}`;
-        setInterval(function() {
-            fetch(url)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.status_code == 200) {
-                        window.location.href = '{{ route('pembayaran.sukses', $data->id) }}';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }, 7000);
-    </script>
 @endpush

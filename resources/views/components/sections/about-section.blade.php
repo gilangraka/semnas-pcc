@@ -5,11 +5,11 @@
         data-aos-duration="1000"
     >
         <h2
-            class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-co-dark-blue to-co-pink text-transparent bg-clip-text drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-co-pink via-semnas-pink to-semnas-light-pink text-transparent bg-clip-text drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 ease-in-out"
         >
             About Semnas
         </h2>
-        <p class="font-semibold text-lg text-co-dark-blue mt-3 mb-12">
+        <p class="font-semibold text-lg text-co-pink mt-3 mb-12">
             Apa yang perlu diketahui tentang Seminar Nasional Techcomfest?
         </p>
     </div>

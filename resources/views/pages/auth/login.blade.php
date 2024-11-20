@@ -10,7 +10,7 @@
 <div class="px-4 md:px-12 mx-auto">
     <div class="grid md:grid-cols-2 md:gap-8">
         <div id="login-image">
-            <img src="{{ asset('img/logo-semnas.png') }}" alt="Logo Seminar Nasional 2025" class="w-full" />
+            <img src="{{ asset('img/logo semnas.png') }}" alt="Logo Seminar Nasional 2025" class="w-full" />
         </div>
         <div class="items-center my-auto p-8 rounded-md w-full" id="login-form">
             <h1 class="font-bold text-3xl">Masuk</h1>

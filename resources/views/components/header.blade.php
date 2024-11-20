@@ -3,7 +3,7 @@
         <div>
             <img
                 class="w-16 cursor-pointer"
-                src="{{ asset('img/logo-semnas.png') }}"
+                src="{{ asset('img/logo semnas.png') }}"
                 alt="Logo Techomfest"
             />
         </div>
@@ -22,7 +22,7 @@
             @auth
             <x-partials.button-link
                 href="{{ route('dashboard.index') }}"
-                class="bg-gradient-to-r from-co-dark-blue to-co-pink text-white"
+                class="bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink text-white"
             >
                 Dashboard
             </x-partials.button-link>
@@ -30,7 +30,7 @@
             @guest
             <x-partials.button-link
                 href="{{ route('login') }}"
-                class="bg-gradient-to-r from-sem-dark-blue to-sem-light-blue text-white"
+                class="bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink text-white"
             >
                 Masuk
             </x-partials.button-link>

@@ -1,7 +1,7 @@
-<footer class="p-8 bg-gradient-to-r from-sem-dark-blue to-sem-light-blue">
+<footer class="p-8 bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink">
     <div class="grid md:grid-cols-2 lg:grid-cols-3 mx-auto justify-center">
         <div>
-            <img src="{{ asset('img/logo-semnas.png') }}" alt="Logo Techcomfest" class="w-[100px] mx-auto" />
+            <img src="{{ asset('img/logo semnas.png') }}" alt="Logo Techcomfest" class="w-[100px] mx-auto" />
             <p class="text-white my-4">
                 Seminar Nasional merupakan salah satu wujud misi dan peran aktif UKM Polytechnic Computer Club dalam
                 mengikuti perkembangan teknologi dalam bidang IT melalui lomba SMA/ SMK sederajat dan Mahasiswa Umum

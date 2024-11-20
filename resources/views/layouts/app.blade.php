@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Seminar Nasional</title>
-    <link rel="icon" href="{{ asset('img/knowledge.webp') }}" type="image/png">
+    <link rel="icon" href="{{ asset('img/logo semnas.png') }}" type="image/png">
 
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

@@ -1,4 +1,5 @@
-@extends('layouts.auth') @section('title', 'Seminar Nasional 2025 Register Form')
+@extends('layouts.auth')
+@section('title', 'Seminar Nasional 2025 Register Form')
 
 <div class="mt-8 px-12">
     <x-partials.button-link href="/" class="w-[150px] flex items-center gap-2 bg-slate-100">
@@ -9,7 +10,7 @@
 <div class="px-4 md:px-12 mx-auto">
     <div class="grid md:grid-cols-2 gap-8">
         <div class="grid h-full items-center" id="reg-img">
-            <img src="{{ asset('img/logo-semnas.png') }}" alt="Logo Seminar Nasional 2025" class="w-full" />
+            <img src="{{ asset('img/logo semnas.png') }}" alt="Logo Seminar Nasional 2025" class="w-full" />
         </div>
         <div class="items-center my-auto p-8 rounded-md w-full" id="reg-form">
             <div class="text-gray-800">
@@ -29,7 +30,7 @@
                         type="password" />
                 </div>
                 <div class="my-4">
-                    <x-partials.form-input label="Confirm Password" name="password_confirmation"
+                    <x-partials.form-input label="Konfirmasi Password" name="password_confirmation"
                         placeholder="Masukkan konfirmasi password" type="password" />
                 </div>
                 <div class="my-4">
@@ -42,10 +43,9 @@
                 <div class="my-4">
                     <x-partials.form-input label="Profesi" name="profesi" placeholder="Masukkan profesi"/>
                 </div>
-                <button
-                    class="w-full mt-4 mb-12 p-2 px-6 bg-gradient-to-r from-sem-dark-blue to-sem-light-blue text-white rounded-md">
+                <x-partials.button-primary>
                     Daftar
-                </button>
+                </x-partials.button-primary>
                 <div class="flex justify-between items-center">
                     <div class="text-sm text-gray-800 underline">
                         <a href="/login">Sudah punya akun?</a>

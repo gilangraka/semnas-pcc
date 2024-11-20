@@ -11,7 +11,7 @@ class HomeController extends Controller
         $navItems = [
             (object)['name' => 'Home','href' => '#'],
             (object)['name' => 'About','href' => '#about'],
-            (object)['name' => 'Fillers','href' => '#fillers'],
+            (object)['name' => 'Speakers','href' => '#speakers'],
             (object)['name' => 'Benefit','href' => '#benefit'],
             (object)['name' => 'FAQ','href' => '#faq'],
             (object)['name' => 'Techcomfest','href' => 'https://techcomfest.ukmpcc.org'],
@@ -82,6 +82,19 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('pages.home', compact('navItems', 'benefitItems', 'faqItems'));
+        $speakerItems = [
+            (object)[
+                "name"=>"Belinda Azzahra",
+                "imgUrl"=>"Belinda_Azzahra.png",
+                "job"=>"Speakers"
+            ],
+            (object)[
+                "name"=>"Sevaldo Bargi Putra",
+                "imgUrl"=>"Sevaldo.png",
+                "job"=>"Moderator"
+            ],
+        ];
+
+        return view('pages.home', compact('navItems', 'benefitItems', 'faqItems', 'speakerItems'));
     }
 }

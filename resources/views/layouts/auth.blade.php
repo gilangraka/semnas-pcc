@@ -6,9 +6,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <title>@yield('title')</title>
-    <link rel="icon" href="{{ asset('img/tcfest2025.webp') }}" type="image/png">
-
     @vite('resources/css/app.css')
+    <link rel="icon" href="{{ asset('img/logo semnas.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>

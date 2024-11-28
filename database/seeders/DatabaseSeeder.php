@@ -59,8 +59,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $user = new User([
-            'name' => 'Gilang Raka Ramadhan',
-            'email' => 'rakakiki212@gmail.com',
+            'name' => 'Admin',
+            'email' => 'test@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
         ]);

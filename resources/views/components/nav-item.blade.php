@@ -1,6 +1,6 @@
 <li>
     <a
-        class="hover:text-co-pink duration-300"
+        class="hover:text-sem-light-blue duration-300"
         href="{{ $navItem->href }}"
         >{{ $navItem->name }}</a
     >

@@ -1,4 +1,4 @@
-<header class="fixed bg-white drop-shadow-sm left-0 right-0 z-20 p-2">
+<header class="fixed bg-transparent text-white drop-shadow-sm left-0 right-0 z-20 p-2" id="header">
     <nav class="flex justify-between items-center w-[92%] mx-auto">
         <div>
             <img
@@ -8,7 +8,8 @@
             />
         </div>
         <div
-            class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 -top-[800px] md:w-auto w-full flex items-center px-5"
+            class="nav-links md:static absolute bg-transparent text-white md:min-h-fit min-h-[60vh] left-0 -top-[800px] md:w-auto w-full flex items-center px-5"
+            id="nav-links"
         >
             <ul
                 class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8"
@@ -58,5 +59,30 @@
             navLinks.classList.add("-top-[800px]");
         }
     }
+
+    const header = document.getElementById('header');
+    const navlinks = document.getElementById('nav-links');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navlinks.classList.add('bg-white'); 
+            navlinks.classList.add('text-black'); 
+            navlinks.classList.remove('bg-transparent');
+            navlinks.classList.remove('text-white');
+            header.classList.remove('bg-transparent');
+            header.classList.remove('text-white');
+            header.classList.add('bg-white'); 
+            header.classList.add('text-black'); 
+        } else {
+            navlinks.classList.add('bg-transparent');
+            navlinks.classList.add('text-white'); 
+            navlinks.classList.remove('bg-white');
+            navlinks.classList.remove('text-black'); 
+            header.classList.remove('bg-white');
+            header.classList.remove('text-black'); 
+            header.classList.add('bg-transparent');
+            header.classList.add('text-white'); 
+        }
+    });
 </script>
 @endpush

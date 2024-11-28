@@ -1,4 +1,4 @@
-<footer class="p-8 bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink">
+<footer class="p-8 bg-gradient-to-r from-sem-dark-blue to-sem-light-blue">
     <div class="grid md:grid-cols-2 lg:grid-cols-3 mx-auto justify-center">
         <div>
             <img src="{{ asset('img/logo semnas.png') }}" alt="Logo Techcomfest" class="w-[100px] mx-auto" />

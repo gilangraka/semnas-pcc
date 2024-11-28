@@ -1,4 +1,4 @@
-<section class="p-4" id="about">
+<section class="p-4 relative" id="about">
     <div
         class="text-center my-4 text-slate-800"
         data-aos="fade-down"

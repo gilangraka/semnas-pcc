@@ -1,11 +1,11 @@
 <section
-    class="h-screen my-auto grid place-content-center p-4"
+    class="h-screen my-auto grid place-content-center bg-gradient-to-r  from-sem-dark-blue to-sem-light-blue px-4"
     data-aos="fade-down"
     data-aos-duration="1000"
 >
     <div class="flex flex-col-reverse md:flex-row gap-4 items-center">
         <div
-            class="xl:w-1/2 bg-clip-text text-transparent bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink drop-shadow-lg"
+            class="xl:w-1/2 text-white drop-shadow-lg"
         >
             <h2 class="text-6xl md:text-8xl xl:text-9xl font-medium">Seminar Nasional</h2>
             <div class="flex flex-col md:flex-row md:items-center">

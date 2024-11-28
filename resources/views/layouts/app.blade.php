@@ -16,6 +16,7 @@
 
     @include('components.header')
 
+    <x-sections.hero-section />
     <main class='container mx-auto flex flex-col gap-y-32'>
         @yield('content')
     </main>
@@ -28,6 +29,7 @@
         AOS.init();
     </script>
     @stack('scripts')
+    @vite('resources/js/app.js')
 
 </body>
 

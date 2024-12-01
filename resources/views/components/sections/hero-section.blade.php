@@ -1,5 +1,5 @@
 <section
-    class="h-screen my-auto grid place-content-center bg-gradient-to-r  from-sem-dark-blue to-sem-light-blue px-4"
+    class="h-screen my-auto grid place-content-center bg-gradient-to-r  from-semnas-pink via-semnas-blue to-semnas-light-blue px-4 md:px-24"
     data-aos="fade-down"
     data-aos-duration="1000"
 >

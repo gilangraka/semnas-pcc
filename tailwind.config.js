@@ -18,6 +18,8 @@ module.exports = {
                 "semnas-dark-pink": "#ff57a0",
                 "semnas-pink": "#ff76b5",
                 "semnas-light-pink": "#ffb3e1",
+                "semnas-light-blue": "#b1e3ff",
+                "semnas-blue": "#75acff",
             },
         },
     },

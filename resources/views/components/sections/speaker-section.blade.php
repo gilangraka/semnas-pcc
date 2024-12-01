@@ -9,7 +9,7 @@
         >
             Speakers
         </h2>
-        <p class="font-semibold text-lg text-co-pink-blue mt-3 mb-12">
+        <p class="font-semibold text-lg text-co-pink mt-3 mb-12">
             Siapa sih pembicara pada acara semnas kali ini?
         </p>
     </div>
@@ -21,7 +21,7 @@
         @foreach ($speakerItems as $item)
         <li class="relative w-full sm:w-1/2 md:w-1/4">
             <div
-                class="bg-gradient-to-b from-semnas-dark-pink via-semnas-pink to-semnas-light-pink h-[450px] rounded-lg shadow-lg flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105"
+                class="bg-gradient-to-b from-semnas-pink via-semnas-blue to-semnas-light-blue h-[450px] rounded-lg shadow-lg flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105"
             >
                 <span
                     class="w-full absolute text-white top-3 left-3 font-semibold text-3xl"

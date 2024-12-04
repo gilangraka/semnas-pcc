@@ -52,7 +52,7 @@
         @if (!$data->ref_peserta->ref_qrcode)
             <form action="{{ route('pembayaran.store') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-primary d-flex gap-3 align-items-center">Bayar Sekarang</button>
+                <button type="submit" class="btn btn-grad d-flex gap-3 align-items-center">Bayar Sekarang</button>
             </form>
         @else
             <img src="{{ asset('storage/qr_code') . '/' . $data->ref_peserta->ref_qrcode->file_qrcode }}"

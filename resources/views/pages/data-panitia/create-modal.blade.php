@@ -38,7 +38,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    <button type="submit" class="btn btn-grad w-100">Submit</button>
                 </div>
             </form>
         </div>

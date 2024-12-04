@@ -6,7 +6,7 @@
 
 @section('content')
     @can('Tambah Panitia')
-        <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#tambahModal">Tambah Panitia</button>
+        <button class="btn btn-grad mb-4" data-bs-toggle="modal" data-bs-target="#tambahModal">Tambah Panitia</button>
     @endcan
     <table id="panitia_table" class="table table-bordered" style="width:100%">
         <thead>

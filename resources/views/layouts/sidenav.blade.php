@@ -1,6 +1,6 @@
 {{-- Aside --}}
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-    <div class="sidebar-brand"><a href="./index.html" class="brand-link"><span class="brand-text fw-light">SEMNAS
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="light"> <!--begin::Sidebar Brand-->
+    <div class="sidebar-brand"><a href="{{url('/')}}" class="brand-link"><span class="brand-text fw-light">SEMNAS
                 2025</span></a></div>
     <div class="sidebar-wrapper">
         <nav class="mt-2"> <!--begin::Sidebar Menu-->

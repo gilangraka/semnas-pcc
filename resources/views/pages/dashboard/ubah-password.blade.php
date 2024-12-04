@@ -22,7 +22,7 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col-12"><button type="submit" class="btn btn-primary w-100">Ubah Password</button>
+        <div class="col-12"><button type="submit" class="btn-grad w-100">Ubah Password</button>
         </div>
     </div>
 </form>

@@ -14,6 +14,8 @@
         integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
     <link href="{{ asset('css/dataTables.bootstrap5.css') }}" rel="stylesheet">
+    {{-- @vite('resources/css/app.css') --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @stack('css')
 </head>
 

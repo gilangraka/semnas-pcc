@@ -19,9 +19,9 @@
         data-aos-duration="1000"
     >
         <img
-            src="{{ asset('img/about.png') }}"
-            alt="Logo Semnas"
-            class="w-full md:w-[550px] md:drop-shadow-2xl"
+            src="{{ asset('img/about-semnas.jpg') }}"
+            alt="Semnas Techcomfest" 
+            class="w-full md:w-[550px] md:drop-shadow-2xl rounded-lg"
         />
         <article class="prose text-base">
             <p>

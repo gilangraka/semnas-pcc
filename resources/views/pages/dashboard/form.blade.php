@@ -6,7 +6,7 @@
         <label for="foto_profil" class="col-md-4 col-lg-3 col-form-label">Foto Profil</label>
         <div class="col-md-8 col-lg-9">
             @if ($data->ref_peserta->foto_profil == null)
-                <button type="button" class="btn btn-primary d-flex gap-2"
+                <button type="button" class="btn bg-gradient-to-r from-semnas-dark-pink via-semnas-pink to-semnas-light-pink text-white d-flex gap-2"
                     onclick="document.getElementById('foto_profil').click();"><i
                         class="nav-icon bi bi-upload"></i><span>Upload
                         Foto</span></button>
@@ -93,7 +93,7 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col-12"><button type="submit" class="btn btn-primary w-100">Submit</button>
+        <div class="col-12"><button type="submit" class="btn btn-grad w-100">Submit</button>
         </div>
     </div>
 </form>

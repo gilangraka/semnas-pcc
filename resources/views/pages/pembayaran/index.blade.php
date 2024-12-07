@@ -23,7 +23,7 @@
             <span><b>TIKET SEMNAS 2025</b></span>
             <span>DENGAN HARGA</span>
             <span><b>Rp. {{ number_format(config('app.harga_tiket'), 0, ',', '.') }}</b></span>
-            <button class="btn btn-primary w-100 mt-4" id="pay-button">Lakukan Pembayaran</button>
+            <button class="btn-grad w-100 mt-4" id="pay-button">Lakukan Pembayaran</button>
         </div>
     </div>
 @endsection

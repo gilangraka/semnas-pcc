@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -56,21 +57,16 @@ class HomeController extends Controller
             ],
             (object)[
                 "question" => "Materi apa yang disampaikan di Seminar Nasional?",
-                "answer" => "LinkedIn yang diikuti oleh beberapa sub materi, yaitu..."
+                "answer" => "LinkedIn yang diikuti oleh beberapa sub materi, yaitu : 
+                            Pengenalan apa itu LinkedIn, manfaat menggunakan LinkedIn, penjelasan tentang dunia karir dengan LinkedIn, tips menggunakan LinkedIn secara profesional, meningkatkan daya tarik profil di mata HRD dan membangun personal branding melalui LinkedIn."
             ],
             (object)[
                 "question" => "Seminar Nasional dilaksanakan dimana saja?",
-                "answer" => "Seminar dilakukan secara hybrid yaitu secara online via zoom dan offline di Gedung Kerjasama Terpadu Polines 
-                            dengan alamat Jl. Prof. Sudarto, Tembalang, Kec. Tembalang, Kota Semarang, Jawa Tengah atau bisa klik disini."
+                "answer" => "Seminar dilakukan secara hybrid yaitu secara online via zoom dan offline di Gedung Kerjasama Terpadu Polines dengan alamat Jl. Prof. Sudarto, Tembalang, Kec. Tembalang, Kota Semarang, Jawa Tengah  atau bisa dilihat dengan link: https://maps.app.goo.gl/SJBbNzSH14CV4AsT7"
             ],
             (object)[
                 "question" => "Siapa pengisi suara di Seminar Nasional nanti?",
-                "answer" => "Untuk pengisi materi sendiri akan kami umumkan di instagram Techcomfest, 
-                            jadi stay tune terus yaaaa"
-            ],
-            (object)[
-                "question" => "Hal apa saja yang perlu disiapkan di Seminar Nasional TECHCOMFEST nanti?",
-                "answer" => "Untuk perlengkapan yang perlu dibawa waktu seminar nasional TECHCOMFEST akan diumumkan menyusul. Jadi stay tune terus yaaa"
+                "answer" => "Untuk pengisi materi sendiri akan kami umumkan di instargam techcomfest instagram.com/techcomfest, jadi stay tune terus yaaaa"
             ],
             (object)[
                 "question" => "Metode pembayarannya bagaimana?",
@@ -78,23 +74,39 @@ class HomeController extends Controller
             ],
             (object)[
                 "question" => "HTM untuk Seminar nasional berapa?",
-                "answer" => "..."
+                "answer" => "Early Bird 25k, Presale 1 30k, Presale 2 35k"
             ],
         ];
 
         $speakerItems = [
             (object)[
-                "name"=>"Belinda Azzahra",
-                "imgUrl"=>"Belinda_Azzahra.png",
+                "name"=>"",
+                "imgUrl"=>"siluet-speakers.png",
                 "job"=>"Speakers"
             ],
             (object)[
-                "name"=>"Sevaldo Bargi Putra",
-                "imgUrl"=>"Sevaldo.png",
+                "name"=>"",
+                "imgUrl"=>"siluet-moderator.png",
                 "job"=>"Moderator"
             ],
         ];
 
+        $speakerItems = $this->updateSpeakerItems($speakerItems);
+
         return view('pages.home', compact('navItems', 'benefitItems', 'faqItems', 'speakerItems'));
+    }
+
+    private function updateSpeakerItems($speakerItems) {
+        $currentDate = Carbon::now(); 
+        
+        if ($currentDate->isSameDay(Carbon::createFromDate($currentDate->year, 12, 12))) {
+            $speakerItems[0]->name = "Belinda Azzahra";
+            $speakerItems[0]->imgUrl = "Belinda_Azzahra.png"; 
+
+            $speakerItems[1]->name = "Sevaldo Bargi Putra"; 
+            $speakerItems[1]->imgUrl = "Sevaldo.png";
+        }
+
+        return $speakerItems;
     }
 }

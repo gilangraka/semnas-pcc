@@ -78,6 +78,108 @@ class HomeController extends Controller
             ],
         ];
 
+        $medpartItems = [
+            (object)[
+                "name" => "Css Related Competitions",
+                "imgUrl" => "css-related.webp",
+            ],
+            (object)[
+                "name" => "Edaran Event",
+                "imgUrl" => "edaran-event.webp",
+            ],
+            (object)[
+                "name" => "Event H.id",
+                "imgUrl" => "event-h.webp",
+            ],
+            (object)[
+                "name" => "Event Mahasiswa",
+                "imgUrl" => "event-mahasiswa.webp",
+            ],
+            (object)[
+                "name" => "Info Lomba",
+                "imgUrl" => "info-lomba.webp",
+            ],
+            (object)[
+                "name" => "Kumpulan Event",
+                "imgUrl" => "kumpulan-event.webp",
+            ],
+            (object)[
+                "name" => "Lomba SMA",
+                "imgUrl" => "lomba-sma.webp",
+            ],
+            (object)[
+                "name" => "Media Partner",
+                "imgUrl" => "media-partner.webp",
+            ],
+            (object)[
+                "name" => "Mitra Lomba",
+                "imgUrl" => "mitra-lomba.webp",
+            ],
+            (object)[
+                "name" => "Seputar Info Id",
+                "imgUrl" => "seputar-infoid.webp",
+            ],
+            (object)[
+                "name" => "HME Undip",
+                "imgUrl" => "hme-undip.webp",
+            ],
+            (object)[
+                "name" => "Undip Menfess",
+                "imgUrl" => "undip-menfess.webp",
+            ],
+            (object)[
+                "name" => "Polines Menfess",
+                "imgUrl" => "polines-menfess.webp",
+            ],
+            (object)[
+                "name" => "Bem Polines",
+                "imgUrl" => "bem-polines.webp",
+            ],
+            (object)[
+                "name" => "Hme Polines",
+                "imgUrl" => "hme-polines.webp",
+            ],
+            (object)[
+                "name" => "Hima Polines",
+                "imgUrl" => "hima-polines.webp",
+            ],
+            (object)[
+                "name" => "Hmab Polines",
+                "imgUrl" => "hmab-polines.webp",
+            ],
+        ];
+
+        $sponsorItems = [
+            (object)[
+                "name" => "PT Iksa Media Indonesia",
+                "imgUrl" => "ptiksa.webp",
+            ],
+            (object)[
+                "name" => "Bebek Carok",
+                "imgUrl" => "bebekcarok.webp",
+            ],
+            (object)[
+                "name" => "Bank Jateng",
+                "imgUrl" => "bankjateng.webp",
+            ],
+            (object)[
+                "name" => "IDCloudHost",
+                "imgUrl" => "idcloudhost.webp",
+            ],
+            (object)[
+                "name" => "Annida",
+                "imgUrl" => "annida.webp",
+            ],
+            (object)[
+                "name" => "Baswara Konveksi",
+                "imgUrl" => "baswara.webp",
+            ],
+            (object)[
+                "name" => "Bebek Pak Eko",
+                "imgUrl" => "bebekpakeko.webp",
+            ],
+        ];
+
         $speakerItems = [
             (object)[
                 "name"=>"",
@@ -93,7 +195,7 @@ class HomeController extends Controller
 
         $speakerItems = $this->updateSpeakerItems($speakerItems);
 
-        return view('pages.home', compact('navItems', 'benefitItems', 'faqItems', 'speakerItems'));
+        return view('pages.home', compact('navItems', 'benefitItems', 'faqItems', 'speakerItems','medpartItems', 'sponsorItems'));
     }
 
     private function updateSpeakerItems($speakerItems) {
